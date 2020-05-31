@@ -1,0 +1,6 @@
+uploads/
+*.pyc
+__pycache__/
+migrations/
+*.sqllite3
+
