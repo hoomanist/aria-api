@@ -22,3 +22,12 @@ class CarCompleteSerializer(ModelSerializer):
         photo_url = car.photo.url
         return request.build_absolute_uri(photo_url)
 
+class Carimages(ModelSerializer):
+    model  = Car
+    fields = ['image']
+    def get_photo_url(self, car):
+        request = self.context.get('request')
+        photo_url = car.photo.url
+        return request.build_absolute_uri(photo_url)
+
+

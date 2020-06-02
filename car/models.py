@@ -22,3 +22,10 @@ class NewsModel(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+
+
+
+class Image(models.Model):
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)
+    image = models.ImageField()
