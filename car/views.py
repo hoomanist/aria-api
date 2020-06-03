@@ -26,12 +26,13 @@ def carcomplete(request):
         query = Car.objects.get(code=int(request.GET["code"]))
         serialize = CarCompleteSerializer(query)
         return Response(serialize.data)
+
 @api_view(('GET', ))
 def images(request):
     if request.method == "GET":
         car_query = Car.objects.get(code=int(request.GET["code"]))
         images_query = Image.objects.filter(car=car_query) 
-        serialize = CarCompleteSerializer(images_query)
+        serialize = Carimages(images_query, many=True)
         return Response(serialize.data)
 
 

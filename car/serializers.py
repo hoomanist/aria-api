@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer 
-from .models import NewsModel, Car
+from .models import NewsModel, Car, Image
 
 class NewsSerializer(ModelSerializer):
     class Meta:
@@ -10,7 +10,7 @@ class NewsSerializer(ModelSerializer):
 class CarPreviewSerializer(ModelSerializer):
     class Meta:
         model = Car
-        fields = ['name', 'brand', 'code', 'image']
+        fields = ['name', 'brand', 'code', 'main_image']
 
 
 class CarCompleteSerializer(ModelSerializer):
@@ -23,7 +23,7 @@ class CarCompleteSerializer(ModelSerializer):
         return request.build_absolute_uri(photo_url)
 
 class Carimages(ModelSerializer):
-    model  = Car
+    model  = Image
     fields = ['image']
     def get_photo_url(self, car):
         request = self.context.get('request')
